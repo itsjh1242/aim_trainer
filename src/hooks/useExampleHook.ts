@@ -15,7 +15,7 @@ export const useExampleHook = () => {
     const fetchUser = async () => {
       setLoading("fetcing user data...");
       try {
-        const data = await exampleService.fetchUser();
+        const data = (await exampleService.fetchUser()) as UserType[];
         setUsers(data);
       } catch (err) {
         console.error(err);
