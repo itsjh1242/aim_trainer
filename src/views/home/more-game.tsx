@@ -10,12 +10,12 @@ const GAMES: GameType[] = [
   {
     name: "에임 연습",
     description: "당신의 에임은 정확하고 빠른가요?",
-    link: "/game/aim",
+    link: "game/aim",
   },
   {
     name: "반응속도 테스트",
     description: "반응속도를 테스트해보세요!",
-    link: "/game/reaction-rate",
+    link: "game/reaction-rate",
   },
 ];
 
