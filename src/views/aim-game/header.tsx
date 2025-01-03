@@ -1,10 +1,10 @@
 // component
 import { BlinkingCircle } from "@/components/element";
 // store
-import { useGameStore } from "@/stores";
+import { useAimTrainGameStore } from "@/stores";
 
-const GamePageHeader: React.FC = () => {
-  const { playing } = useGameStore();
+const AimGamePageHeader: React.FC = () => {
+  const { playing } = useAimTrainGameStore();
   return (
     <div className="flex h-[10%] w-full items-center justify-between">
       {/* left */}
@@ -19,4 +19,4 @@ const GamePageHeader: React.FC = () => {
   );
 };
 
-export default GamePageHeader;
+export default AimGamePageHeader;

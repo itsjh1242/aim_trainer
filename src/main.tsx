@@ -7,7 +7,8 @@ import AppRoutes from "@/routes";
 // style
 import "@/index.css";
 
-const basename = import.meta.env.VITE_BROWSER_ROUTER_BASE_NAME || "/";
+const basename =
+  import.meta.env.VITE_BROWSER_ROUTER_BASE_NAME || "/aim_trainer";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

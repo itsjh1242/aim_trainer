@@ -1,2 +1,3 @@
+export { useAimTrainGameStore } from "./useAimTrainGameStore";
 export { useAuthStore } from "./useAuthStore";
-export { useGameStore } from "./useGameStore";
+export { useRRGameStore } from "./useRRGameStore";

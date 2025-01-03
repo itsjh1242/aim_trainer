@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const GamePagePreGame: React.FC = () => {
+const AimGamePagePreGame: React.FC = () => {
   return (
     <motion.div
       className="absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center bg-gray-900/50 backdrop-blur-md"
@@ -37,4 +37,4 @@ const GamePagePreGame: React.FC = () => {
   );
 };
 
-export default GamePagePreGame;
+export default AimGamePagePreGame;

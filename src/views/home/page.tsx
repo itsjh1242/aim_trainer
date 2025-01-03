@@ -1,12 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+// component
+import HomePageMoreGame from "./more-game";
 
 export const HomePage: React.FC = () => {
-  const navigate = useNavigate();
-  const handleGetStart = () => {
-    navigate("/game");
-    return;
-  };
   return (
     <>
       {/* Background */}
@@ -18,12 +13,12 @@ export const HomePage: React.FC = () => {
       {/* Content */}
       <section className="relative z-10 m-auto h-screen w-screen place-content-center place-items-center">
         <p className="text-4xl font-bold text-blue-700">
-          당신의 에임은 정확합니까?
+          한계에 도전해보세요~!
         </p>
         <p className="text-2xl text-gray-900">Challenge your limits!</p>
-        <Button className="mt-[36px]" onClick={() => handleGetStart()}>
-          시작하기
-        </Button>
+
+        {/* More */}
+        <HomePageMoreGame />
       </section>
     </>
   );
