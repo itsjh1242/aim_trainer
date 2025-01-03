@@ -9,7 +9,7 @@ import "@/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter basename={"/aim_trainer"}>
+    <BrowserRouter basename="/aim_trainer">
       <AppRoutes />
     </BrowserRouter>
   </StrictMode>,

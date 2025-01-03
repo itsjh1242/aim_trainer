@@ -21,8 +21,8 @@ jobs:
           node-version: 20
 
       # 3. 환경 변수 설정
-      - name: Set environment variables
-        run: echo "VITE_BROWSER_ROUTER_BASE_NAME=${{ secrets.VITE_BROWSER_ROUTER_BASE_NAME }}" >> $GITHUB_ENV
+      # - name: Set environment variables
+      #   run: echo "VITE_BROWSER_ROUTER_BASE_NAME=${{ secrets.VITE_BROWSER_ROUTER_BASE_NAME }}" >> $GITHUB_ENV
       # Secrets 설정이 필요한 변수 추가
       # - run: echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
       # - run: echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
