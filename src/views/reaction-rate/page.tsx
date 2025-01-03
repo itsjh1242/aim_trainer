@@ -6,6 +6,21 @@ import { Circle } from "@/components/element";
 import { Button } from "@/components/ui/button";
 import { useRRGameStore } from "@/stores";
 
+const BackgroundClickWrapper: React.FC<{ onClick: () => void }> = ({
+  onClick,
+  children,
+}) => {
+  return (
+    <div
+      className="absolute inset-0 z-0"
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+    >
+      {children}
+    </div>
+  );
+};
+
 export const RRGamePage: React.FC = () => {
   HookWait();
 
@@ -19,7 +34,12 @@ export const RRGamePage: React.FC = () => {
   } = useRRGameStore();
 
   const handleClick = () => {
-    if (start_time) {
+    if (playing === "ready") {
+      setPlaying("error");
+      return;
+    }
+
+    if (playing === "in-process" && start_time) {
       const now = performance.now();
       const reaction_time = Math.round(now - start_time);
 
@@ -53,34 +73,41 @@ export const RRGamePage: React.FC = () => {
   ];
 
   return (
-    <LayoutFullPX40 className="flex flex-col items-center justify-center gap-6">
-      {playing === "in-process" && (
-        <div
-          className="flex h-[300px] w-[300px] cursor-pointer flex-col items-center justify-center gap-2 rounded-full bg-red-500 text-center text-2xl font-bold text-white shadow-lg"
-          onClick={handleClick}
-        >
-          <p>클릭하세요!</p>
-          <p>Click Me!</p>
-        </div>
-      )}
-      {playing === "finish" && (
-        <div className="text-center">
-          <p className={`text-4xl font-bold ${resultStyle.color}`}>
-            {taken_time}ms
-          </p>
-          <div className="mt-6 flex gap-4">
-            {criteria.map((criterion, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <Circle className={`h-4 w-4 ${criterion.color}`} />
-                <p className="text-sm text-gray-700">{criterion.range}</p>
-              </div>
-            ))}
+    <LayoutFullPX40 className="relative flex flex-col items-center justify-center gap-6">
+      <BackgroundClickWrapper onClick={handleClick}>
+        {playing === "in-process" && (
+          <div className="flex h-[300px] w-[300px] flex-col items-center justify-center gap-2 rounded-full bg-red-500 text-center text-2xl font-bold text-white shadow-lg">
+            <p>클릭하세요!</p>
+            <p>Click Me!</p>
           </div>
-          <Button className="mt-[24px]" onClick={resetGame}>
-            다시하기
-          </Button>
-        </div>
-      )}
+        )}
+        {playing === "finish" && (
+          <div className="text-center">
+            <p className={`text-4xl font-bold ${resultStyle.color}`}>
+              {taken_time}ms
+            </p>
+            <div className="mt-6 flex gap-4">
+              {criteria.map((criterion, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <Circle className={`h-4 w-4 ${criterion.color}`} />
+                  <p className="text-sm text-gray-700">{criterion.range}</p>
+                </div>
+              ))}
+            </div>
+            <Button className="mt-[24px]" onClick={resetGame}>
+              다시하기
+            </Button>
+          </div>
+        )}
+        {playing === "error" && (
+          <div className="text-center">
+            <p className="text-4xl font-bold text-red-500">너무 급했어요...</p>
+            <Button className="mt-[24px]" onClick={resetGame}>
+              다시하기
+            </Button>
+          </div>
+        )}
+      </BackgroundClickWrapper>
     </LayoutFullPX40>
   );
 };

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type PlayingStatusType = "ready" | "in-process" | "finish";
+type PlayingStatusType = "ready" | "in-process" | "finish" | "error";
 
 interface RRGameStore {
   // waiting time to start rr game
