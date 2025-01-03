@@ -4,19 +4,23 @@ import { Route, Routes } from "react-router-dom";
 import { RootLayout } from "@/components/layout/root";
 // view
 import { AimGamePage, ExamplePage, HomePage, RRGamePage } from "@/views";
+import RedirectHandler from "./lib/redirectHandler";
 
 const AppRoutes: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="game">
-          <Route path="aim" element={<AimGamePage />} />
-          <Route path="reaction-rate" element={<RRGamePage />} />
+    <>
+      <RedirectHandler />
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="game">
+            <Route path="aim" element={<AimGamePage />} />
+            <Route path="reaction-rate" element={<RRGamePage />} />
+          </Route>
+          <Route path="example" element={<ExamplePage />} />
         </Route>
-        <Route path="example" element={<ExamplePage />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };
 
