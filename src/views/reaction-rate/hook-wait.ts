@@ -1,19 +1,25 @@
 // react
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 // store
 import { useRRGameStore } from "@/stores";
 
 const HookWait = () => {
   const { wait_time, setPlaying, set_start_time } = useRRGameStore();
 
-  useEffect(() => {
+  const start = useCallback(() => {
     const timer = setTimeout(() => {
       setPlaying("in-process");
       set_start_time(performance.now());
     }, wait_time * 1000);
 
-    return () => clearTimeout(timer);
+    return timer;
   }, [wait_time, setPlaying, set_start_time]);
+
+  useEffect(() => {
+    const timer = start();
+
+    return () => clearTimeout(timer);
+  }, [start]);
 
   return null;
 };

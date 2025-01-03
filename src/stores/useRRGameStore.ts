@@ -15,6 +15,9 @@ interface RRGameStore {
   // playing status
   playing: PlayingStatusType | null;
   setPlaying: (status: PlayingStatusType) => void;
+
+  // reset game state
+  resetGame: () => void;
 }
 
 export const useRRGameStore = create<RRGameStore>((set) => ({
@@ -35,5 +38,15 @@ export const useRRGameStore = create<RRGameStore>((set) => ({
   playing: "ready",
   setPlaying: (status) => {
     set({ playing: status });
+  },
+
+  // reset game state
+  resetGame() {
+    set({
+      wait_time: Math.floor(Math.random() * (10 - 2 + 1) + 2),
+      start_time: null,
+      taken_time: null,
+      playing: "ready",
+    });
   },
 }));

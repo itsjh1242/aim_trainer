@@ -3,13 +3,20 @@ import { LayoutFullPX40 } from "@/components/layout/section";
 import HookWait from "./hook-wait";
 // store
 import { Circle } from "@/components/element";
+import { Button } from "@/components/ui/button";
 import { useRRGameStore } from "@/stores";
 
 export const RRGamePage: React.FC = () => {
   HookWait();
 
-  const { playing, start_time, taken_time, set_taken_time, setPlaying } =
-    useRRGameStore();
+  const {
+    playing,
+    start_time,
+    taken_time,
+    set_taken_time,
+    setPlaying,
+    resetGame,
+  } = useRRGameStore();
 
   const handleClick = () => {
     if (start_time) {
@@ -69,6 +76,9 @@ export const RRGamePage: React.FC = () => {
               </div>
             ))}
           </div>
+          <Button className="mt-[24px]" onClick={resetGame}>
+            다시하기
+          </Button>
         </div>
       )}
     </LayoutFullPX40>
