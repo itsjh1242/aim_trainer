@@ -9,9 +9,12 @@
   <body>
     Redirecting...
     <script>
-      // JavaScript로 동적 리다이렉트 처리
-      const pathname = window.location.pathname.replace("/aim_trainer", "");
-      window.location.replace("/aim_trainer" + pathname);
+      // 동적 경로 리다이렉션 처리
+      const pathname = window.location.pathname.replace(
+        /^\/(?!aim_trainer)/,
+        "/aim_trainer/",
+      );
+      window.location.replace(pathname);
     </script>
   </body>
 </html>
